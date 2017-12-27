@@ -26,6 +26,8 @@ COPY database.yml /opt/redmine/config/
 
 RUN \
   cd /opt/redmine
+#  rake db:migrate RAILS_ENV="production" && \
+#  nohup ruby /opt/redmine/script/server webrick -e production > /dev/null
 
 WORKDIR /opt/redmine
 

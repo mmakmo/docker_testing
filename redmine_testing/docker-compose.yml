@@ -36,8 +36,8 @@ services:
     environment:
       - TZ=Asia/Tokyo
 #    restart: always
-    volumes:
-      - "./mysql:/etc/mysql/conf.d"
+#    volumes:
+#      - "./mysql:/etc/mysql/conf.d"
 #    command: mysqld
 #    command: bash -c "service mysql start && tail -f /dev/null"
 
