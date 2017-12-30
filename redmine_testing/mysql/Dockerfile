@@ -10,7 +10,7 @@ ENV MYSQL_PASSWORD redmine
 RUN groupadd -r mysql && useradd -r -g mysql mysql
 
 # add gosu for easy step-down from root
-ENV GOSU_VERSION 1.7
+ENV GOSU_VERSION 1.10
 RUN set -x \
 	&& apt-get update && apt-get install -y --no-install-recommends ca-certificates wget && rm -rf /var/lib/apt/lists/* \
 	&& wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$(dpkg --print-architecture)" \
@@ -68,13 +68,9 @@ RUN { \
 
 VOLUME /var/lib/mysql
 
-COPY custom.cnf /etc/mysql/conf.d/
-
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN ln -s usr/local/bin/docker-entrypoint.sh /entrypoint.sh # backwards compat
-# ENTRYPOINT ["docker-entrypoint.sh"]
-
-RUN nohup mysqld &
 
 EXPOSE 3306
-CMD tail -f /dev/null
+
+CMD docker-entrypoint.sh mysqld
