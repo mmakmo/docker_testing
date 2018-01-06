@@ -69,7 +69,9 @@ RUN { \
 VOLUME /var/lib/mysql
 
 COPY docker-entrypoint.sh /usr/local/bin/
-RUN ln -s usr/local/bin/docker-entrypoint.sh /entrypoint.sh # backwards compat
+RUN \
+sed -i -e 's/\r$//' usr/local/bin/docker-entrypoint.sh && \
+ln -s usr/local/bin/docker-entrypoint.sh /entrypoint.sh # backwards compat
 
 EXPOSE 3306
 
