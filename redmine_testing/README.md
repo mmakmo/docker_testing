@@ -36,24 +36,6 @@ Redmineのちょっとしたこと確認用なので、とりあえず動く物�
 
 対象ファイル: `mysql/custom.cnf`
 
-### Set http/https Environment Variables
-Proxy設定が必要な場合、環境変数として事前に設定するか、もしくは `docker-compose.yml` が存在しているディレクトリ内に `.env` ファイルを用意する。
-
-この作業は初回のみで良い。
-
-```bash
-$ # 環境変数として用意する場合の例
-$ http_proxy=proxy.example.com:80
-$ https_proxy=proxy.example.com:443
-```
-
-```bash
-$ # .env ファイルを用意する場合の例
-$ cat .env
-http_proxy=proxy.example.com:80
-https_proxy=proxy.example.com:443
-```
-
 ### Setup Containers
 初回もしくは `docker-compose down` を実行した後で改めてコンテナを作成する場合に実行する。
 
