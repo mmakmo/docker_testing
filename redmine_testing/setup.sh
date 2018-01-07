@@ -2,8 +2,8 @@
 
 set -ue
 
-echo "Creating docker images"
-docker-compose build 1> /dev/null
+echo "Pulling docker images"
+docker-compose pull 1> /dev/null
 
 echo "Starting docker containers"
 docker-compose up -d

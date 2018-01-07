@@ -5,7 +5,13 @@ services:
   redmine_0_8_4:
     container_name: redmine_0_8_4
     hostname: redmine_0_8_4
-    image: mmakmo/redmine:0.8.4
+    build:
+      context: ./redmine/0.8.4
+      dockerfile: Dockerfile
+      args:
+        - http_proxy=${http_proxy}
+        - https_proxy=${https_proxy}
+    image: redmine:0.8.4
     depends_on:
       - redmine_mysql_5_6
     networks:
@@ -18,7 +24,13 @@ services:
   redmine_1_2_0:
     container_name: redmine_1_2_0
     hostname: redmine_1_2_0
-    image: mmakmo/redmine:1.2.0
+    build:
+      context: ./redmine/1.2.0
+      dockerfile: Dockerfile
+      args:
+        - http_proxy=${http_proxy}
+        - https_proxy=${https_proxy}
+    image: redmine:1.2.0
     depends_on:
       - redmine_mysql_5_6
     networks:
@@ -31,7 +43,13 @@ services:
   redmine_2_6_0:
     container_name: redmine_2_6_0
     hostname: redmine_2_6_0
-    image: mmakmo/redmine:2.6.0
+    build:
+      context: ./redmine/2.6.0
+      dockerfile: Dockerfile
+      args:
+        - http_proxy=${http_proxy}
+        - https_proxy=${https_proxy}
+    image: redmine:2.6.0
     depends_on:
       - redmine_mysql_5_6
     networks:
@@ -44,7 +62,13 @@ services:
   redmine_3_4_0:
     container_name: redmine_3_4_0
     hostname: redmine_3_4_0
-    image: mmakmo/redmine:3.4.0
+    build:
+      context: ./redmine/3.4.0
+      dockerfile: Dockerfile
+      args:
+        - http_proxy=${http_proxy}
+        - https_proxy=${https_proxy}
+    image: redmine:3.4.0
     depends_on:
       - redmine_mysql_5_6
     networks:
@@ -57,7 +81,13 @@ services:
   redmine_mysql_5_6:
     container_name: redmine_mysql_5_6
     hostname: redmine_mysql_5_6
-    image: mmakmo/redmine_mysql_5_6
+    build:
+      context: ./mysql
+      dockerfile: Dockerfile
+      args:
+        - http_proxy=${http_proxy}
+        - https_proxy=${https_proxy}
+    image: redmine_mysql_5_6
     networks:
       - private-network
     ports:
